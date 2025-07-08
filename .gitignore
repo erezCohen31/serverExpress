@@ -1,0 +1,60 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.symbols.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# Rider
+.idea/
+
+# JetBrains ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# OS generated files
+.DS_Store
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Publish output
+publish/
+
+# dotenv files
+.env
+.env.*
+
+node_modules
