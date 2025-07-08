@@ -15,13 +15,22 @@ server.get('/greet', (req, res) => {
 server.get('/greet/:name', (req, res) => {
     const { name } = req.params;
     console.log(`I got: ${name}`);
-    const data = {
-        message: `got name: ${name}`
-    }
-    const dataStr = JSON.stringify(data)
-    res.end(dataStr)
+    res.json({
+        msg: `got name: ${name}`
+    })
+    res.end()
 })
-server.get('/test', (req, res) => {
+server.get('/test', async (req, res) => {
+    const name = "Bob";
+    const response = await fetch(`http://localhost:${PORT}/greet/${name}`);
+    const data = await response.json();
+
+    if (data.msg && data.msg.includes(name)) {
+        res.json({ result: "ok" });
+    } else {
+        res.json({ result: "fail" });
+    }
+    res.end()
 
 })
 
