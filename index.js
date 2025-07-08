@@ -4,13 +4,21 @@ const server = express();
 const PORT = 4545
 server.use(express.json());
 
+function logger(req, res, next) {
+    req.timeBegin = new Date();
+    console.log(`[${req.timeBegin.toISOString()}] ${req.method} ${req.url}`);
+    next();
+}
+
+server.use(logger)
 
 server.get('/greet', (req, res) => {
-    const data = {
-        message: `hi from get endpoint: ${new Date()}`
-    }
-    const dataStr = JSON.stringify(data)
-    res.end(dataStr)
+    res.json({
+        message: `hi from get endpoint: [${new Date().toISOString()}]`,
+        time: `time of begin: [${req.timeBegin.toISOString()}]`
+
+    })
+
 })
 server.get('/greet/:name', (req, res) => {
     const { name } = req.params;
@@ -48,8 +56,8 @@ server.post('/action', async (req, res) => {
             }
 
         })
-        const text = await response.text();
-        res.json({ length: text.length });
+        const dataJson = await response.json()
+        res.json({ length: dataJson.length });
     } else {
         res.status(400).json({ msg: "body is malformed" });
     }
