@@ -48,6 +48,10 @@ ehthumbs.db
 *.swp
 *.swo
 *.bak
+
+# Environment variables
+.env
+
 *.tmp
 
 # Publish output

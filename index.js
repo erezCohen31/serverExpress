@@ -1,7 +1,7 @@
 import express from "express";
 
 const server = express();
-const PORT = 4545
+const PORT = process.env.PORT || 3000
 server.use(express.json());
 
 function logger(req, res, next) {
@@ -16,9 +16,7 @@ server.get('/greet', (req, res) => {
     res.json({
         message: `hi from get endpoint: [${new Date().toISOString()}]`,
         time: `time of begin: [${req.timeBegin.toISOString()}]`
-
     })
-
 })
 server.get('/greet/:name', (req, res) => {
     const { name } = req.params;
@@ -37,7 +35,6 @@ server.get('/test', async (req, res) => {
     } else {
         res.json({ result: "fail" });
     }
-
 })
 server.post('/action', async (req, res) => {
     if (req.body.action === "joke") {
@@ -51,8 +48,7 @@ server.post('/action', async (req, res) => {
         const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=11', {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
-                "x-api-key": apiKey,
+                "x-api-key": apiKey
             }
 
         })
