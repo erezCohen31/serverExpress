@@ -18,6 +18,11 @@ server.get('/greet', (req, res) => {
         time: `time of begin: [${req.timeBegin.toISOString()}]`
     })
 })
+server.get('/mylove', (req, res) => {
+    res.json({
+        message: `je t aime d amour mon coeur`,
+    })
+})
 server.get('/greet/:name', (req, res) => {
     const { name } = req.params;
     console.log(`I got: ${name}`);
